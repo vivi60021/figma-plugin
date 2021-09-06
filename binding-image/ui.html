@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://static.figma.com/api/figma-extension-api-0.0.1.css">
+<h2>Binding Image</h2>
+<p>
+    image paint scale mode:
+    <select id="select" name="select">
+        <option value="fill" selected>Fill</option>
+        <option value="fit">Fit</option>
+        <option value="crop">Crop</option>
+        <option value="tile">Tile</option>
+    </select>
+</p>
+<b id="errors"></b>
+<p><button>Binding Image</button></p>
+<script>
+    document.querySelector('button').onclick = () => {
+        const select = document.getElementById("select").value;
+        parent.postMessage({ pluginMessage: select }, '*')
+    }
+    showError = errorMessage => {
+        document.querySelector('#errors').textContent = errorMessage
+    }
+</script>
